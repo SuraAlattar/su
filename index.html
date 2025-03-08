@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        /* CSS for the navigation bar */
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .navbar_container {
+            display: flex;
+            justify-content: flex-end; /* Aligns the link to the right */
+        }
+
+        .navbar_link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar_link:hover {
+            background-color: #555; /* Change background on hover */
+        }
+
+        /* Additional styles for the main content */
+        main {
+            background-color: white; /* Set the background color to white */
+            padding: 20px; /* Add some padding for better spacing */
+            border-radius: 8px; /* Optional: add rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+        }
+
+        /* Additional styles for the product grid */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #004C4C;
+        }
+
+        body h1 {
+            color: #f9f9f9;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            border: 2px solid #fff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            background-color: #FFDB58;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .add-to-cart {
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            right: -350px;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95); /* Set background color with opacity */
+            color: #008080;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            padding: 20px;
+            transition: right 0.3s;
+            z-index: 1000; /* Ensure the cart is above other elements */
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #008080;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: red;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            height: 70%;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #FFDB58;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="login.html" class="navbar_link">تسجيل دخول</a>
+        </div>
+    </nav>
+    
+    <div class="wrapper">
+        <input class="btn_animation__checkbox" id="animation" type="checkbox">
+        <label class="btn_animation" for="animation">
+            <svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+                <path style="fill:#60b533" d="m178.6 202 202.1 198-202.1 198-60.3-61.8L257.2 400 118.3 263.8z"/>
+                <path style="fill:#349905" d="m273.5 0 408.2 400-408.2 400-121.9-124.9L432.3 400 151.6 124.9z"/>
+                <path style="fill:#5ecc25" d="m202.1 401-84-86.2v166.4z"/>
+            </svg>
+        </label>
+        <button class="btn_menu" type="button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M4 5a1 1 0 0 0 0 2h16a1 1 0 1 0 0-2H4Zm3 7a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Zm6 6a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1Z"
+                      fill="#000"/>
+            </svg>
+        </button>
+        <main class="main">
+            <div class="main_section">
+                <div class="header_wrapper">
+                    <h1 class="header_title">Mr.Black</h1>
+                    <p class="header_subtitle">Classic Men Clothes</p>
+                </div>
+    
+                <img class="main_image" src=https://github.com/SuraAlattar/su/blob/main/WhatsApp%20Image%202025-03-07%20at%201.13.13%20PM.jpeg?raw=true width="800" height="800" alt="Borsh">
+    
+                <div class="recipe_footer">
+                    <dl class="recipe_controls">
+                        <dt class="subtitle">Shopping Time</dt>
+                        <dd>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#0F0F0F"
+                                      d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11ZM3.007 12a8.993 8.993 0 1 0 17.986 0 8.993 8.993 0 0 0-17.986 0Z"/>
+                                <path fill="#0F0F0F"
+                                      d="M12 5a1 1 0 0 0-1 1v6.467s0 .26.127.457c.084.166.217.31.39.41l4.62 2.668a1 1 0 0 0 1-1.732L13 11.88V6a1 1 0 0 0-1-1Z"/>
+                            </svg>
+                            <span></span></dd>
+    
+                        <dt class="subtitle">Serving</dt>
+                        <dd>
+                            <svg height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487.55 487.55" xml:space="preserve">
+                                <path d="M244.625 171.415c-40 0-72.4 32.4-72.4 72.4s32.4 72.4 72.4 72.4 72.4-32.4 72.4-72.4c-.1-40-32.5-72.4-72.4-72.4zm0 48.8c-13 0-23.6 10.6-23.6 23.6 0 6-4.8 10.8-10.8 10.8s-10.8-4.8-10.8-10.8c0-24.9 20.3-45.2 45.2-45.2 6 0 10.8 4.8 10.8 10.8 0 6-4.9 10.8-10.8 10.8z"/>
+                                <path d="M481.325 227.515c-224.8-258.6-428-53.9-476.4 2.8-6.5 7.6-6.6 18.8-.1 26.4 221.9 259 423.4 64.6 476.5 3.7 8.3-9.4 8.3-23.4 0-32.9zm-236.7 119.1c-56.8 0-102.8-46-102.8-102.8s46-102.8 102.8-102.8 102.8 46 102.8 102.8-46.1 102.8-102.8 102.8z"/>
+                            </svg>
+                            <span>1000 people</span>
+                        </dd>
+                    </dl>
+    
+                    <div class="recipe_ingredients">
+                        <p class="recipe_title subtitle">Product Range</p>
+                        <ul class="recipe_list">
+                            <li>Men's T-Shirts</li>
+                            <li>Pants</li>
+                            <li>Belts</li>
+                            <li>Fragrances</li>
+                            <li>Watches</li>
+                            <li>Footwear</li>
+                            <li>Men's T-Shirts</li>
+                            <li>Pants</li>
+                            <li>Belts</li>
+                            <li>Fragrances</li>
+                            <li>Watches</li>
+                            <li>Footwear</li>
+                        </ul>
+                    </div>
+    
+                    <div class="ingredients">
+                        <figure class="ingredients_item">
+                            <img src=https://github.com/SuraAlattar/su/blob/main/Download%20Blank%20T%20shirt%20photo%20for%20mockup%20design%20for%20free.jpg?raw=true alt="beetroot"/>
+                            <figcaption>Beetroot</figcaption>
+                        </figure>
+                        <figure class="ingredients_item">
+                            <img src="C:\Users\Lenovo\Desktop\7.3\New folder\Barakah.jpg" alt="cabbage"/>
+                            <figcaption>Cabbage</figcaption>
+                        </figure>
+                        <figure class="ingredients_item">
+                            <img src=https://github.com/SuraAlattar/su/blob/main/Download%20Blank%20T%20shirt%20photo%20for%20mockup%20design%20for%20free.jpg?raw=truealt="pork neck"/>
+                            <figcaption>Pork Neck</figcaption>
+                        </figure>
+                        <figure class="ingredients_item">
+                            <img src="C:\Users\Lenovo\Desktop\7.3\New folder\Men Dragon & Letter Graphic Tee.jpg" alt="Potatoes"/>
+                            <figcaption>Potatoes</figcaption>
+                        </figure>
+                        <figure class="ingredients_item">
+                            <img src="C:\Users\Lenovo\Desktop\7.3\New folder\Men Solid Tee.jpg" alt="tomatoes"/>
+                            <figcaption>Tomatoes</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="main_video">
+                <ol class="steps_list">
+                    <li>
+                        <b>Step 1: Prepare Ingredients</b>
+                        <p>Peel and chop all vegetables. Wash the piece of meat.</p>
+                    </li>
+                    <li>
+                        <b>Step 2: Boil the Meat</b>
+                        <p>Boil the meat until it starts falling off the bone. Remove the foam that forms during boiling.</p>
+                        <p>After 40 minutes, add the beans. Continue boiling for another 20 minutes over medium heat. Meanwhile, prepare the vegetables.</p>
+                    </li>
+                    <li>
+                        <b>Step 3: Prepare the Main Part of the Borscht</b>
+                        <p>Chop the white cabbage and onion into small pieces.</p>
+                        <p>Chop the peeled potatoes into small cubes (4-6 pieces).</p>
+                        <p>Grate 2 carrots.</p>
+                        <p>Grate 150-200g of beetroot.</p>
+                    </li>
+                    <li>
+                        <b>Step 4: Boil the Vegetables</b>
+                        <p>When the meat starts to fall off the bone, remove it from the pot.</p>
+                        <p>Add the potatoes to the broth and continue boiling for 10 minutes.</p>
+                        <p>Sauté the onion and garlic until golden brown. 1-2 minutes in sunflower oil.</p>
+                        <p>Add the carrot and sauté for another 2 minutes.</p>
+                        <p>Add the grated beetroot and sauté for 5-7 minutes, stirring frequently.</p>
+                        <p>Add 1 tablespoon of vinegar. Sauté for another 2 minutes, stirring.</p>
+                        <p>Add 20g of salt, stir, sauté for another 2 minutes.</p>
+                        <p>Add 150g of tomato paste or finely chopped tomatoes. Mix well, sauté for 3 more minutes.</p>
+                        <p>Add 100g of broth, simmer the vegetables for 15 minutes over low heat.</p>
+                    </li>
+                    <li>
+                        <b>Step 5: Mix Vegetables with Broth</b>
+                        <p>Add pepper and bay leaf to the broth with boiled potatoes.</p>
+                        <p>Add cabbage and cook for 10-15 minutes.</p>
+                        <p>Add the boiled meat to the broth, add 20g of salt, and cook over medium heat for 10 minutes.</p>
+                        <p>Add the sautéed vegetables to the broth, mix, and cook for another 5 minutes.</p>
+                        <p>Turn off the stove and let it sit for 15 minutes.</p>
+                    </li>
+                    <li>
+                        <b>Step 6: Serving</b>
+                        <p>Remove the bay leaf.</p>
+                        <p>Add grated garlic and chopped herbs (parsley, dill, green onion).</p>
+                        <p>Serve the borscht hot, garnished with a spoonful of sour cream on each portion.</p>
+                    </li>
+                </ol>
+                <div class="video_box">
+                    <div class="video_box__wrap">
+                        <video src="C:\Users\Lenovo\Desktop\7.3\New Folder\istockphoto-1169989406-640_adpp_is.mp4" muted autoplay loop poster="https://media.githubusercontent.com/media/BlackStar1991/Borsh/main/images/borsh.webp">Video about Borsh
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Product Grid Section -->
+    <h1>Our Products</h1>
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="C:\Users\Lenovo\Desktop\7.3\New Folder\Download Blank T shirt photo for mockup design for free.jpg" class="product-image" alt="Product 1">
+            <h3>Wireless Headphones</h3>
+            <p>$99.99</p>
+            <button class="add-to-cart" data-id="1" data-name="Wireless Headphones" data-price="99.99">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="C:\Users\Lenovo\Desktop\7.3\New Folder\Download Blank T shirt photo for mockup design for free.jpg" class="product-image" alt="Product 2">
+            <h3>Smart Watch</h3>
+            <p>$299.99</p>
+            <button class="add-to-cart" data-id="2" data-name="Smart Watch" data-price="299.99">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="C:\Users\Lenovo\Desktop\7.3\New Folder\Download Blank T shirt photo for mockup design for free.jpg" class="product-image" alt="Product 3">
+            <h3>Bluetooth Speaker</h3>
+            <p>$149.99</p>
+            <button class="add-to-cart" data-id="3" data-name="Bluetooth Speaker" data-price="149.99">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="C:\Users\Lenovo\Desktop\7.3\New Folder\Download Blank T shirt photo for mockup design for free.jpg" class="product-image" alt="Product 4">
+            <h3>E-Reader</h3>
+            <p>$179.99</p>
+            <button class="add-to-cart" data-id="4" data-name="E-Reader" data-price="179.99">Add to Cart</button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <img src="C:\Users\Lenovo\Desktop\7.3\New Folder\Download Blank T shirt photo for mockup design for free.jpg"class="product-image" alt="Product 5">
+            <h3>Wireless Mouse</h3>
+            <p>$49.99</p>
+            <button class="add-to-cart" data-id="5" data-name="Wireless Mouse" data-price="49.99">Add to Cart</button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <img src="C:\Users\Lenovo\Desktop\7.3\New Folder\Download Blank T shirt photo for mockup design for free.jpg" class="product-image" alt="Product 6">
+            <h3>Portable Charger</h3>
+            <p>$29.99</p>
+            <button class="add-to-cart" data-id="6" data-name="Portable Charger" data-price="29.99">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart">&times;</button>
+        </div>
+        <ul class="cart-items"></ul>
+        <div class="cart-total">
+            <strong>Total: $<span id="total">0.00</span></strong>
+        </div>
+    </div>
+
+    <!-- link to JavaScript file -->
+    <script src="script.js"></script>
+    <script>
+        const cart = [];
+        const cartSidebar = document.querySelector('.cart-sidebar');
+        const cartItemsList = document.querySelector('.cart-items');
+        const totalElement = document.getElementById('total');
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = {
+                    id: button.dataset.id,
+                    name: button.dataset.name,
+                    price: parseFloat(button.dataset.price)
+                };
+                cart.push(product);
+                updateCartDisplay();
+                cartSidebar.classList.add('active');
+            });
+        });
+
+        // Update cart display
+        function updateCartDisplay() {
+            cartItemsList.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>$${item.price.toFixed(2)}</span>
+                    <button onclick="removeFromCart(${index})">&times;</button>
+                `;
+                cartItemsList.appendChild(li);
+                total += item.price;
+            });
+            
+            totalElement.textContent = total.toFixed(2);
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        // Toggle cart visibility
+        document.querySelector('.close-cart').addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
